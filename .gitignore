@@ -7,4 +7,3 @@ composer.phar
 Thumbs.db
 .env
 .idea
-*.lock
