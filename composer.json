@@ -1,7 +1,7 @@
 {
     "name": "digitouch/adform-php-sdk",
     "type": "library",
-    "description": "Adorm APIs Client for PHP based on Guzzle",
+    "description": "AdForm APIs Client for PHP based on Guzzle",
     "keywords": ["api","adform", "guzzle"],
     "homepage": "https://github.com/theblogtvspa/adform-php-sdk",
     "license": "MIT",
