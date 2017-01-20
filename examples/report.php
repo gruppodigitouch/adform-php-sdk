@@ -40,7 +40,8 @@ do {
         $staticTicket = file_get_contents($file);
         $ticket = new Ticket($staticTicket);
         $result = $api->call(ApiFactory::REPORT_STATS, $ticket, $params);
-        dump($result->fetch());exit;
+        dump($result->fetch());
+        exit(0);
 
     } catch (AdFormResponseException $e) {
         $error = $e;
@@ -51,12 +52,14 @@ do {
         }
 
     } catch (\Exception $e) {
-        dump($e->getMessage());exit;
+        dump($e->getMessage());
+        exit(0);
     }
 
 } while ($errorOccurred < 2 && null !== $error);
 
 
 if (null !== $error) {
-    dump(get_class($error), $error->getMessage(), $error->getResponse());exit;
+    dump(get_class($error), $error->getMessage(), $error->getResponse());
+    exit(0);
 }
