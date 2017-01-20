@@ -1,0 +1,10 @@
+/vendor/
+/examples/config.php
+/examples/ticket.txt
+phpunit.xml
+composer.phar
+.DS_Store
+Thumbs.db
+.env
+.idea
+*.lock

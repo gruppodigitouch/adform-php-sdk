@@ -1,0 +1,27 @@
+{
+    "name": "digitouch/adform-php-sdk",
+    "type": "library",
+    "description": "Adorm APIs Client for PHP based on Guzzle",
+    "keywords": ["api","adform", "guzzle"],
+    "homepage": "https://github.com/theblogtvspa/adform-php-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alessandro Fiore",
+            "email": "alessandro.fiore@gruppodigitouch.it",
+            "homepage": "http://www.gruppodigitouch.it",
+            "role": "Developer"
+        }
+    ],
+
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "symfony/var-dumper": "^3.2"
+    },
+    "autoload": {
+        "psr-4": { "Digitouch\\": "src/" }
+    }
+}

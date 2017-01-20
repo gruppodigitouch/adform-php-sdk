@@ -1,0 +1,5 @@
+<?php
+
+define("USERNAME",     "your-username");
+define("PASSWORD",     "your-password");
+define("COMPANY",      "your-company-name");
