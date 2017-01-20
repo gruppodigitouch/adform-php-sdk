@@ -1,5 +1,8 @@
 # AdForm SDK for PHP
 
+[![Build Status](https://travis-ci.org/theblogtvspa/adform-php-sdk.svg?branch=master)](https://travis-ci.org/theblogtvspa/adform-php-sdk)
+[![Latest Stable Version](https://poser.pugx.org/digitouch/adform-php-sdk/v/stable)](https://packagist.org/packages/digitouch/adform-php-sdk)
+
 The **AdForm SDK for PHP** to access [AdForm's API](http://api.adform.com/help/)
 
 ### Installation
