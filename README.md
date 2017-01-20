@@ -3,10 +3,8 @@
 The **AdForm SDK for PHP** to access [AdForm's API](http://api.adform.com/help/)
 
 ### Installation
-Use [Composer] to download dependencies:
-
 ```
-$ composer install
+$ composer require digitouch/adform-php-sdk
 ```
 
 ### Usage
@@ -35,6 +33,12 @@ Currently implemented Endpoints:
 * [Data Export](http://api.adform.com/help/references/buyer-solutions/reporting/data-exports)
 
 ### Run Tests
+Use [Composer] to download dependencies:
+```
+$ composer install
+```
+
+Then run:
 ```
 $ ./vendor/bin/phpunit
 ```
