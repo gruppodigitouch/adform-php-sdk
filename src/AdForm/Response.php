@@ -33,6 +33,7 @@ class Response
 
         $responseError = $this->response;
         if (isset($responseError->Message)) {
+
             switch ($responseError->Message) {
                 case 'Ticket is invalid':
                     throw new AdFormResponseException\TicketInvalidException($responseError);
@@ -42,7 +43,9 @@ class Response
                     break;
             }
         }
+        
         if (isset($responseError->reason)) {
+
             switch ($responseError->reason) {
                 case 'authenticationFailed':
                     throw new AdFormResponseException\TicketInvalidException($responseError);
