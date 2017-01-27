@@ -9,7 +9,8 @@ class TicketInvalidException extends \Exception implements AdFormResponseExcepti
 
     public function __construct($response)
     {
-        parent::__construct($response->Message);
+        $message = isset($response->Message) ? $response->Message : $$response->message;
+        parent::__construct($message);
         $this->response = $response;
 
     }
