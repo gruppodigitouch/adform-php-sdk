@@ -31,6 +31,11 @@ class Response
             return $this->response->{$this->var};
         }
 
+        if(!$this->var && !empty($this->response)) {
+            return $this->response;
+        }
+
+
         $responseError = $this->response;
         if (isset($responseError->Message)) {
 

@@ -7,6 +7,7 @@ use Digitouch\AdForm\Client\HttpClient;
 use Digitouch\AdForm\ApiFactory;
 use Digitouch\AdForm\Auth\Ticket;
 use Digitouch\AdForm\Exception\Response\AdFormResponseException;
+use Digitouch\AdForm\Exception\Response as ResponseException;
 
 $errorOccurred = 0;
 $error = null;
@@ -22,14 +23,14 @@ do {
 
         $staticTicket = file_get_contents($file);
         $ticket = new Ticket($staticTicket);
-        $result = $api->call(ApiFactory::DATA_EXPORT_LIST, $ticket, []);
+        $result = $api->call(ApiFactory::DATA_EXPORT, $ticket, ['DataExportsIds' => 149843]);
         dump($result->fetch());
         exit(0);
 
-    } catch (AdFormResponseException $e) {
+    } catch (ResponseException\AdFormResponseException $e) {
         $error = $e;
         $errorOccurred++;
-        if($e->getMessage() == 'Ticket header is missing') {
+        if($e instanceof ResponseException\TicketInvalidException || $e instanceof ResponseException\TicketMissingException) {
             $ticket = $api->auth(USERNAME, PASSWORD);
             file_put_contents($file, $ticket);
         }

@@ -70,9 +70,17 @@ JSON;
     public function testCanCreateCampaignsService()
     {
         $stubTicket = $this->createMock(TicketInterface::class);
-        $users = $this->api->service(ApiFactory::CAMPAIGNS, $stubTicket, []);
-        $this->assertInstanceOf('Digitouch\AdForm\Service', $users);
-        $this->assertInstanceOf('Digitouch\AdForm\Service\Campaign\Campaigns', $users);
+        $campaigns = $this->api->service(ApiFactory::CAMPAIGNS, $stubTicket, []);
+        $this->assertInstanceOf('Digitouch\AdForm\Service', $campaigns);
+        $this->assertInstanceOf('Digitouch\AdForm\Service\Campaign\Campaigns', $campaigns);
+    }
+
+    public function testCanCreateTrackingCampaignsService()
+    {
+        $stubTicket = $this->createMock(TicketInterface::class);
+        $campaigns = $this->api->service(ApiFactory::TRACKING_CAMPAIGNS, $stubTicket, ['advertiserId' => '1111']);
+        $this->assertInstanceOf('Digitouch\AdForm\Service', $campaigns);
+        $this->assertInstanceOf('Digitouch\AdForm\Service\Campaign\TrackingCampaigns', $campaigns);
     }
 
     public function testCanCreateReportingService()

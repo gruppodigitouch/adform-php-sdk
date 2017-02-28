@@ -17,6 +17,8 @@ class ApiFactory
 
     // Campaign
     const CAMPAIGNS = 'Campaign\\Campaigns';
+    const TRACKING_CAMPAIGNS = 'Campaign\\TrackingCampaigns';
+
 
     // Reporting
     const REPORT_STATS = 'Reporting\\Stats';

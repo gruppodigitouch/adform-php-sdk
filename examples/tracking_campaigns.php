@@ -22,7 +22,7 @@ do {
 
         $staticTicket = file_get_contents($file);
         $ticket = new Ticket($staticTicket);
-        $result = $api->call(ApiFactory::CAMPAIGNS, $ticket, []);
+        $result = $api->call(ApiFactory::TRACKING_CAMPAIGNS, $ticket, ['advertiserId'=>'']);
         dump($result->fetch());
         exit(0);
 
