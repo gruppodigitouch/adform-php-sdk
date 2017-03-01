@@ -59,12 +59,12 @@ class Response
             }
         }
 
-        throw new AdFormResponseException\GenericResponseException($responseError);
-
         if(!$this->var && !empty($this->response)) {
             return $this->response;
         }
-        
+
+        throw new AdFormResponseException\GenericResponseException($responseError);
+
     }
 
 }
