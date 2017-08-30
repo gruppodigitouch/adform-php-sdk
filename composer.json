@@ -1,9 +1,9 @@
 {
-    "name": "digitouch/adform-php-sdk",
+    "name": "gruppodigitouch/adform-php-sdk",
     "type": "library",
     "description": "AdForm APIs Client for PHP based on Guzzle",
     "keywords": ["api","adform", "guzzle"],
-    "homepage": "https://github.com/theblogtvspa/adform-php-sdk",
+    "homepage": "https://github.com/gruppodigitouch/adform-php-sdk",
     "license": "MIT",
     "authors": [
         {
@@ -15,7 +15,7 @@
     ],
 
     "require": {
-        "php": "^5.6 || ^7.0",
+        "php": "^5.6 || ^7.0 || ^7.1",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
