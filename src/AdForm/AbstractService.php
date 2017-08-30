@@ -9,6 +9,7 @@ use Digitouch\AdForm\Exception\Response\UnauthorizedException;
 use Digitouch\AdForm\Exception\ServiceException;
 use Digitouch\AdForm\Response as AdFormResponse;
 use Digitouch\AdForm\Service;
+use stdClass;
 
 class AbstractService implements Service
 {
@@ -83,7 +84,9 @@ class AbstractService implements Service
         $responseJson = $this->httpClient->sendData($this->method, $this->endPoint, $options);
 
         if ($responseJson->getStatusCode() === 401) {
-            throw new UnauthorizedException($responseJson);
+            $response = new stdClass();
+            $response->message = $responseJson->getReasonPhrase();
+            throw new UnauthorizedException($response);
         }
 
         $response = json_decode($responseJson->getBody()->getContents());
