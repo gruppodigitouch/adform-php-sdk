@@ -9,12 +9,12 @@ class Response
 {
     /**
      * @param stdClass $response
-     */   
+     */
     private $response;
 
     /**
      * @param string $var
-     */   
+     */
     private $var;
 
 
@@ -25,9 +25,9 @@ class Response
     }
 
     public function fetch()
-    {   
+    {
 
-        if(isset($this->response->{$this->var}) && !empty($this->response->{$this->var})) {
+        if(isset($this->response->{$this->var}) && null !== $this->response->{$this->var}) {
             return $this->response->{$this->var};
         }
 
@@ -43,7 +43,7 @@ class Response
                     break;
             }
         }
-        
+
         if (isset($responseError->reason)) {
 
             switch ($responseError->reason) {
