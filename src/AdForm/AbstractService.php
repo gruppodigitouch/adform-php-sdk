@@ -2,12 +2,13 @@
 
 namespace Digitouch\AdForm;
 
-use Digitouch\AdForm\Client\ClientInterface;
 use Digitouch\AdForm\Auth\TicketInterface;
-use Digitouch\AdForm\Service;
-use Digitouch\AdForm\Response as AdFormResponse;
-use Digitouch\AdForm\Exception\ServiceException;
+use Digitouch\AdForm\Client\ClientInterface;
 use Digitouch\AdForm\Exception\MissingParamsException;
+use Digitouch\AdForm\Exception\Response\TicketInvalidException;
+use Digitouch\AdForm\Exception\ServiceException;
+use Digitouch\AdForm\Response as AdFormResponse;
+use Digitouch\AdForm\Service;
 
 class AbstractService implements Service
 {
@@ -24,7 +25,7 @@ class AbstractService implements Service
 
     /**
      * @param string $endPoint
-     */    
+     */
     protected $endPoint = null;
 
 
@@ -80,6 +81,11 @@ class AbstractService implements Service
         ];
 
         $responseJson = $this->httpClient->sendData($this->method, $this->endPoint, $options);
+
+        if ($responseJson->getStatusCode() === 401) {
+            throw new TicketInvalidException('Ticket is invalid');
+        }
+
         $response = json_decode($responseJson->getBody()->getContents());
 
         return new AdFormResponse($response, $this->responseVar);
