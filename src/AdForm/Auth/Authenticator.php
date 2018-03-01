@@ -3,6 +3,7 @@
 namespace Digitouch\AdForm\Auth;
 
 use Digitouch\AdForm\Client\ClientInterface;
+use Digitouch\AdForm\Exception\Response\AuthenticationException;
 
 class Authenticator
 {
@@ -49,9 +50,13 @@ class Authenticator
         ];
 
         $response = $this->client->sendData('POST', 'Security/Login', $options);
-        $json = json_decode($response->getBody()->getContents(), true);
-        
-        $this->ticket = new Ticket($json['Ticket']);
+        $json = json_decode($response->getBody()->getContents());
+
+        if (!isset($json->Ticket)) {
+            throw new AuthenticationException($json);
+        }
+
+        $this->ticket = new Ticket($json->Ticket);
 
     }
 
