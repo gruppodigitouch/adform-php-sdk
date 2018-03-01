@@ -3,6 +3,7 @@
 namespace Digitouch\Tests\AdForm\Auth;
 
 use Digitouch\AdForm\Client\ClientInterface;
+use Digitouch\AdForm\Exception\Response\AuthenticationException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -57,6 +58,27 @@ JSON;
         $auth = $this->auth;
         $auth->expire();
         $this->assertEquals($auth->isExpired(), true);
+    }
+
+
+    public function testInvalidCredentials()
+    {
+        $this->expectException(AuthenticationException::class);
+        $this->expectExceptionMessage('Incorrect user name or password');
+
+        // Create a mock
+        $responseBody = <<<JSON
+{"ErrorCode":null,"Message":"Incorrect user name or password","Details":null}
+JSON;
+
+        $responseSize = strlen($responseBody);
+        $stubClient = $this->createMock(ClientInterface::class);
+        $response = new Response(200, ['Content-Length' => $responseSize], $responseBody);
+        // Configure the stub.
+        $stubClient->method('sendData')
+             ->willReturn($response);
+
+        new \Digitouch\AdForm\Auth\Authenticator($stubClient, 'invalid-username', 'invalid-pasword');
     }
 }
 
